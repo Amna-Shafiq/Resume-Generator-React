@@ -8,10 +8,9 @@ const Resume = ({imageSource,userObject}) => {
   return (
     <div className='resume-card'>
       <div className='resume-card-inner'>
-
         <div className='section section-1'>
           <h3 className='full-name'>
-            {userObject.firstName}{userObject.lastName} </h3>  
+            {userObject.firstName} {userObject.lastName} </h3>  
             {console.log('first naem',userObject.firstName)}
      
           <p className = 'pfp' alt={`${userObject.firstName}'s profile`} src={imageSource} />
