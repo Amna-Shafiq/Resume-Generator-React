@@ -10,8 +10,24 @@ body{
 .prompt-container{
   height:100vh;
   max-width: 100vw;
-  background: rgb(48,218,122);
+  background: rgb(22, 44, 31);
   padding:45px;
+}
+
+.header {
+  text-align: center;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Adjust this value for the desired bounce height */
+  }
+}
+.bounce-text {
+  text-align: center;
+  animation: bounce 1s infinite; /* Adjust the animation duration as needed */
 }
 .input{
   width:100%;
@@ -168,6 +184,7 @@ label:hover{
   margin:100px;
 
 }
+
 .resume-card{
   width: 15000px;
  
@@ -253,8 +270,8 @@ ul{
   color:black;
 }
 .pfp{
-  width:50%;
-  height:100%;
+  width:40%;
+  height:80%;
   border:1px solid #4e505a;
   border-radius: 50%;
   background: rgb(255,255,255);

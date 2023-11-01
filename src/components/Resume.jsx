@@ -11,9 +11,8 @@ const Resume = ({imageSource,userObject}) => {
         <div className='section section-1'>
           <h3 className='full-name'>
             {userObject.firstName} {userObject.lastName} </h3>  
-            {console.log('first naem',userObject.firstName)}
      
-          <p className = 'pfp' alt={`${userObject.firstName}'s profile`} src={imageSource} />
+            <img className='pfp' src={imageSource} alt={`${userObject.firstName}'s profile`} />
         </div >
 
         <div className="section section-3">
@@ -49,7 +48,6 @@ const Resume = ({imageSource,userObject}) => {
         <div className='section section-8 '>
           
         <h2 className='grad-year'>CLASS OF {userObject.graduationYear}</h2>
-        {console.log(userObject.graduationYear)}
         </div>
 
 

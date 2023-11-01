@@ -3,35 +3,30 @@
  import {HiArrowRight} from 'react-icons/hi'
  import {AiOutlineMail} from 'react-icons/ai'
  import {BsTelephone} from 'react-icons/bs'
-//  import {GiAges} from 'react-icons-gi'
  import {FaBirthdayCake} from 'react-icons/fa'
  import {CgWebsite} from 'react-icons/cg'
  import 'animate.css'
 import Resume from './Resume'
 import InputItem from './InputItem'
-
 import { MdSchool } from 'react-icons/md';
 import { BsPersonWorkspace } from 'react-icons/bs';
-
-
-
  const PromptUser = ({handleChange,imageSource,userObject}) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
   const navigate = useNavigate()
   const onButtonClick =()=>{
-    alert(`WINDOWS DIMENSION : ${window.innerWidth},${window.innerHeight}`)
+    setIsButtonClicked(true);
     navigate('/resume')
-
   }
    return (
      <>
-     {onButtonClick ? <Resume userObject ={userObject} imageSource={selectedImage}/>:<div className='prompt-container'></div>}
-     
-         
-       
-
+     <div className="header">
+      <h1 className="bounce-text">Resume Maker</h1>
+    </div>
+    {isButtonClicked ? <Resume userObject={userObject} imageSource={selectedImage} /> : <div className='prompt-container'></div>}
      <div className='inputs'>
-      <InputItem className = 'first-name' onChange = {handleChange} label ='First Name' placeholder = 'Enter your first name' name='firstName'/>
+     {/* Input fields for user information */}
+      <InputItem className = 'first-name' onChange = {handleChange}  placeholder = 'Enter your first name' name='firstName'/>
       <InputItem className= 'last-name' onChange = {handleChange} label='Last Name' placeholder='Enter your Last Name' name='lastName'/>
       <InputItem className = 'email' onChange = {handleChange} label = {<AiOutlineMail/>} placeholder ='Enter your Email Address' name='email'/>
       <InputItem className = 'phoneNumber' onChange = {handleChange} label = {<BsTelephone/>} placeholder ='Enter your Phone Number' name='phoneNumber'/>
@@ -45,9 +40,6 @@ import { BsPersonWorkspace } from 'react-icons/bs';
               setSelectedImage(file);
             }}
           />
-         
-
-      
       <InputItem className='skills' onChange = {handleChange} label= 'Skill' name='skills' placeholder='List your skills' />
       <InputItem className='experience' onChange = {handleChange} label= {<BsPersonWorkspace/>} name='experience' placeholder='List work experience' />
       <InputItem className='graduationYear' onChange = {handleChange} label= {<MdSchool/>} name='graduationYear' placeholder='List your graduation year' />
@@ -55,6 +47,7 @@ import { BsPersonWorkspace } from 'react-icons/bs';
       <InputItem className='university' onChange = {handleChange} label= 'University' name='university' placeholder='Enter university name' />
       <InputItem className='profile' onChange = {handleChange} label= 'profile' name='profile' placeholder='Write about yourself' />
       {
+        // button to generate the resume
         <button className='generate-button' onClick={()=>{
           onButtonClick()
 
