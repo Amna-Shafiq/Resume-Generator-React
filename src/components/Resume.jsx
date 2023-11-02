@@ -1,9 +1,28 @@
 import React , {useEffect,useState}from 'react'
+import {useNavigate,Link} from 'react-router-dom'
+
 import {AiOutlineMail} from 'react-icons/ai'
 import { CgWebsite } from 'react-icons/cg'
 import { BsTelephone } from 'react-icons/bs'
-const Resume = ({imageSource,userObject}) => {
-  const [skills,setSkills] = useState([])
+const Resume = ({ imageSource, userObject,data }) => {
+
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const navigate = useNavigate();
+
+  const [skills, setSkills] = useState([]);
+  data = [
+    {title: 'group 1', items: [userObject.firstName, userObject.lastName, userObject.university]},
+    {title: 'group 2', items: [userObject.phoneNumber, userObject.email]}
+  ]
+
+  const handleCustomizeClick = () => {
+    // Add code here to send data to CustomResume.jsx
+    setIsButtonClicked(true);
+    
+    navigate('/customize-resume',{data});
+    
+    console.log('Sending data to CustomResume:', data);
+  };
   
   return (
     <div className='resume-card'>
@@ -49,10 +68,10 @@ const Resume = ({imageSource,userObject}) => {
           
         <h2 className='grad-year'>CLASS OF {userObject.graduationYear}</h2>
         </div>
-
-
       </div>
+      <button onClick={handleCustomizeClick}>Customize Resume</button>
       </div>
+      
   )
 }
 
